@@ -1,0 +1,50 @@
+---
+- name: local Fedora configuration
+  hosts: localhost
+  connection: local
+  become: yes
+  vars:
+    - fedora_current: 30
+      gnome_extension_ids:
+        - 19   # User Themes
+        - 2    # Frippery Move Clock
+        - 750  # OpenWeather
+        - 1297 # Remove Dash
+        - 800  # Remove Dropdown Arrows
+        - 1708 # Transparent Top Bar
+  roles:
+    - jaredhocutt.gnome_extensions
+  tasks:
+    - name: install the rpmfusion repo packages
+      dnf:
+        state: present
+        name:
+          - "http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_current }}.noarch.rpm"
+          - "http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_current }}.noarch.rpm"
+    - name: Install tooling and editors
+      dnf:
+        state: present
+        name:
+          - vim
+          - git
+          - emacs
+          - tig
+          - htop
+          - jq
+    - name: Install development related packages
+      dnf:
+        name:
+          - docker
+          - docker-compose
+    - name: Install multimedia codecs and tools
+      dnf:
+        name:
+          - gstreamer1-plugins-base
+          - gstreamer1-plugins-good
+          - gstreamer1-plugins-ugly
+          - gstreamer1-plugins-bad-free
+          - gstreamer1-plugins-bad-freeworld
+          - gstreamer1-plugins-bad-free-extras
+          - ffmpeg
+          - python3-eyed3
+
