@@ -1,0 +1,11 @@
+galaxy_info:
+  author: Matt Valentine-House
+  description: common components required for all workstations
+
+  license: license (GPL-2.0-or-later, MIT, etc)
+
+  min_ansible_version: 2.4
+
+  galaxy_tags: []
+  dependencies: []
+  

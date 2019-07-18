@@ -1,0 +1,3 @@
+---
+# vars file for workstation-common
+dotfile_path: "{{ ansible_env .HOME }}/.dotfiles"

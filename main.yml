@@ -4,6 +4,7 @@
   vars:
     - fedora_version: 30
   roles:
+    - name: workstation_common
     - name: jaredhocutt.gnome_extensions
       gnome_extension_ids:
         - 19   # User Themes
@@ -20,14 +21,11 @@
         name:
           - "http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_version }}.noarch.rpm"
           - "http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_version }}.noarch.rpm"
-    - name: Install tooling and editors
+    - name: Install general tooling
       become: yes
       dnf:
         state: present
         name:
-          - vim
-          - git
-          - emacs
           - tig
           - htop
           - jq

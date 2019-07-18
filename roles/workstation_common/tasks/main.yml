@@ -1,0 +1,53 @@
+---
+- name: Clone Dotfiles
+  git:
+    repo: "git@github.com:eightbitraptor/dotfiles.git"
+    dest: "{{ dotfile_path }}"
+    update: no
+
+- name: Enable COPR for Fira Code font
+  become: yes
+  command: "dnf copr enable -y evana/fira-code-fonts"
+  args:
+    warn: false
+    creates: "/etc/yum.repos.d/_copr:copr.fedorainfracloud.org:evana:fira-code-fonts.repo"
+
+- name: Install Packages
+  become: yes
+  dnf:
+    name:
+      - direnv
+      - vim
+      - emacs
+      - tmux
+      - fira-code-fonts
+    state: present
+
+- name: Stow Git config
+  stow:
+    name: git
+    source: "{{ dotfile_path }}"
+    overwrite_conflicts: yes
+
+- name: Stow Bash config
+  stow:
+    name: bash
+    source: "{{ dotfile_path }}"
+    overwrite_conflicts: yes
+
+- name: Stow Emacs config
+  stow:
+    name: emacs
+    source: "{{ dotfile_path }}"
+    overwrite_conflicts: yes
+
+- name: Ensure emacs customisations file exists
+  file:
+    path: "{{ ansible_env .HOME}}/.emacs.d/customisations.el"
+    state: touch
+
+- name: Stow Tmux config
+  stow:
+    name: tmux
+    source: "{{ dotfile_path }}"
+    overwrite_conflicts: yes
