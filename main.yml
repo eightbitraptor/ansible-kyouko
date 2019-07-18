@@ -4,6 +4,7 @@
   vars:
     - fedora_version: 30
   roles:
+    - name: developer
     - name: workstation_common
     - name: jaredhocutt.gnome_extensions
       gnome_extension_ids:
@@ -30,12 +31,6 @@
           - htop
           - gparted
           - jq
-    - name: Install development related packages
-      become: yes
-      dnf:
-        name:
-          - docker
-          - docker-compose
     - name: Install multimedia codecs and tools
       become: yes
       dnf:

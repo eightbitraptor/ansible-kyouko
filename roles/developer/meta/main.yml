@@ -1,0 +1,18 @@
+galaxy_info:
+  author: Matt Valentine-House
+  description: Set up a Docker based development env
+
+  license: license (GPL-2.0-or-later, MIT, etc)
+
+  min_ansible_version: 2.4
+
+  platforms:
+   - name: Fedora
+     versions:
+     - all
+     - 25
+
+  galaxy_tags: []
+
+dependencies: []
+

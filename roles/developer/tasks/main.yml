@@ -1,0 +1,26 @@
+---
+- name: Install development related packages
+  become: yes
+  dnf:
+    name:
+      - docker
+      - docker-compose
+
+- name: Ensure docker group exists
+  become: yes
+  group:
+    name: docker
+    state: present
+
+- name: Ensure user is a member of docker
+  become: yes
+  user:
+    name: "{{ ansible_env .USER }}"
+    groups: docker
+    append: yes
+
+- name: Ensure docker is enabled and running
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
