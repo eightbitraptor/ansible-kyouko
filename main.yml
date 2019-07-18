@@ -28,6 +28,7 @@
         name:
           - tig
           - htop
+          - gparted
           - jq
     - name: Install development related packages
       become: yes
