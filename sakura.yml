@@ -1,7 +1,6 @@
 ---
 - name: local Fedora configuration
-  hosts: localhost
-  connection: local
+  hosts: all
   become: yes
   vars:
     - fedora_current: 30
