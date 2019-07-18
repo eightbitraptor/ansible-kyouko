@@ -3,6 +3,8 @@
   hosts: all
   vars:
     - fedora_current: 30
+  roles:
+    - name: jaredhocutt.gnome_extensions
       gnome_extension_ids:
         - 19   # User Themes
         - 2    # Frippery Move Clock
@@ -10,8 +12,6 @@
         - 1297 # Remove Dash
         - 800  # Remove Dropdown Arrows
         - 1708 # Transparent Top Bar
-  roles:
-    - jaredhocutt.gnome_extensions
   tasks:
     - name: install the rpmfusion repo packages
       become: yes
