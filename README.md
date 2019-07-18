@@ -15,6 +15,12 @@ The assumptions made are these:
   * That user has a default ssh key configured, that is authorised to pull from Github
   * You have already installed git
 
+Variables
+---------
+
+* `fedora_version`: The version of Fedora that is installed on the machine. Defaults to 30.
+
+
 Running these Playbooks
 --------------
 
