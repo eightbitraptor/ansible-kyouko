@@ -27,6 +27,8 @@
       dnf:
         state: present
         name:
+          - foomatic-db
+          - foomatic-db-ppds
           - tig
           - htop
           - gparted
