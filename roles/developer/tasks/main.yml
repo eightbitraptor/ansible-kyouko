@@ -1,7 +1,7 @@
 ---
 - name: Install development related packages
   become: yes
-  dnf:
+  apt:
     name:
       - docker
       - docker-compose

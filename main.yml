@@ -1,61 +1,22 @@
 ---
-- name: local Fedora configuration
+- name: local Ubuntu configuration
   hosts: all
-  vars:
-    - fedora_version: 30
   roles:
     - name: developer
     - name: workstation_common
-    - name: gnome
   tasks:
-    - name: install the rpmfusion repo packages
-      become: yes
-      dnf:
-        state: present
-        name:
-          - "http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_version }}.noarch.rpm"
-          - "http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_version }}.noarch.rpm"
     - name: Install general tooling
       become: yes
-      dnf:
+      apt:
         state: present
         name:
           - foomatic-db
-          - foomatic-db-ppds
-          - fuse-exfat
+          - foomatic-db-compressed-ppds
+          - exfat-fuse
           - tig
           - htop
           - gparted
           - jq
-    - name: Install Qemu
-      become: yes
-      dnf:
-        state: present
-        name:
-          - bridge-utils
-          - guestfs-browser
-          - libguestfs-tools
-          - libvirt
-          - libvirt-daemon-kvm
-          - libvirt-daemon-config-network
-          - python-libguestfs
-          - qemu-kvm
-          - virt-manager
-          - virt-viewer
-          - virt-install
-          - virt-top
-    - name: Install multimedia codecs and tools
-      become: yes
-      dnf:
-        name:
-          - gstreamer1-plugins-base
-          - gstreamer1-plugins-good
-          - gstreamer1-plugins-ugly
-          - gstreamer1-plugins-bad-free
-          - gstreamer1-plugins-bad-freeworld
-          - gstreamer1-plugins-bad-free-extras
-          - ffmpeg
-          - python3-eyed3
 
     - name: Create service to manage turbo boost
       become: yes

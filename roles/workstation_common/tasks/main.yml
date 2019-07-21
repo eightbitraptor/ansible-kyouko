@@ -5,22 +5,15 @@
     dest: "{{ dotfile_path }}"
     update: no
 
-- name: Enable COPR for Fira Code font
-  become: yes
-  command: "dnf copr enable -y evana/fira-code-fonts"
-  args:
-    warn: false
-    creates: "/etc/yum.repos.d/_copr:copr.fedorainfracloud.org:evana:fira-code-fonts.repo"
-
 - name: Install Packages
   become: yes
-  dnf:
+  apt:
     name:
+      - fonts-firacode
       - direnv
       - vim
       - emacs
       - tmux
-      - fira-code-fonts
     state: present
 
 - name: Stow Git config
