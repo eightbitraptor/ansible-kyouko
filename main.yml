@@ -14,6 +14,7 @@
         - 1297 # Remove Dash
         - 800  # Remove Dropdown Arrows
         - 1708 # Transparent Top Bar
+        - 1765 # Transparent Top Bar
   tasks:
     - name: install the rpmfusion repo packages
       become: yes
@@ -33,6 +34,23 @@
           - htop
           - gparted
           - jq
+    - name: Install Qemu
+      become: yes
+      dnf:
+        state: present
+        name:
+          - bridge-utils
+          - guestfs-browser
+          - libguestfs-tools
+          - libvirt
+          - libvirt-daemon-kvm
+          - libvirt-daemon-config-network
+          - python-libguestfs
+          - qemu-kvm
+          - virt-manager
+          - virt-viewer
+          - virt-install
+          - virt-top
     - name: Install multimedia codecs and tools
       become: yes
       dnf:
