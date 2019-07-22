@@ -39,3 +39,12 @@ Author Information
 Matt Valentine-House
 matt@eightbitraptor.com
 https://www.eightbitraptor.com
+
+TODO
+----
+
+* Ubuntu support
+* Alternative Window manager (i3?)
+* better structure for developer role
+* think about separate libvirt/kvm role
+* override DNF so that it nags when used directly
