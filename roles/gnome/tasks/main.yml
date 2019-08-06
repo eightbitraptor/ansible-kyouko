@@ -1,0 +1,12 @@
+---
+- include_role:
+    name: jaredhocutt.gnome_extensions
+  vars:
+    gnome_extension_ids:
+      - 19   # User Themes
+      - 2    # Frippery Move Clock
+      - 750  # OpenWeather
+      - 1297 # Remove Dash
+      - 800  # Remove Dropdown Arrows
+      - 1708 # Transparent Top Bar
+      - 1765 # Transparent Top Bar
