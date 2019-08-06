@@ -1,0 +1,56 @@
+---
+- name: Enable Polybar i3lock PPA
+  become: yes
+  apt_repository:
+    repo: ppa:codejamninja/jam-os
+
+- name: Clone Dotfiles
+  git:
+    repo: "https://github.com/majutsushi/urxvt-font-size.git"
+    dest: "{{ ansible_env .HOME }}/.config/urxvt/perls"
+    update: no
+
+- name: Install base packages
+  become: yes
+  apt:
+    name:
+      - i3-gaps-wm
+      - rofi
+      - dmenu
+      - compton
+      - polybar
+      - mpd
+      - mpc
+      - feh
+      - i3lock-color
+      - rxvt-unicode
+    state: latest
+
+- name: Install Pywal from local package
+  become: yes
+  apt:
+    deb: "{{ role_path }}/files/pywal_3.3.0-1ubuntu1ppa2_amd64.deb"
+
+- name: Stow x11 config
+  stow:
+    name: x11
+    source: "{{ ansible_env .HOME }}/.dotfiles"
+    overwrite_conflicts: yes
+
+- name: Stow i3 config
+  stow:
+    name: i3
+    source: "{{ ansible_env .HOME }}/.dotfiles"
+    overwrite_conflicts: yes
+
+- name: Stow Polybar config
+  stow:
+    name: polybar
+    source: "{{ ansible_env .HOME }}/.dotfiles"
+    overwrite_conflicts: yes
+
+- name: Stow Compton config
+  stow:
+    name: compton
+    source: "{{ ansible_env .HOME }}/.dotfiles"
+    overwrite_conflicts: yes
