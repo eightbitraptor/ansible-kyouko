@@ -1,4 +1,9 @@
 ---
+- name: Create artifact directory
+  file:
+    path: "{{ ansible_env .HOME }}/.ansible-artifact"
+    state: directory
+
 - name: Clone Dotfiles
   git:
     repo: "git@github.com:eightbitraptor/dotfiles.git"
@@ -50,3 +55,12 @@
     name: tmux
     source: "{{ dotfile_path }}"
     overwrite_conflicts: yes
+
+- name: Stow Fonts
+  stow:
+    name: fonts
+    source: "{{ dotfile_path }}"
+    overwrite_conflicts: yes
+
+- name: Rebuild fc-cache
+  command: fc-cache -fv
