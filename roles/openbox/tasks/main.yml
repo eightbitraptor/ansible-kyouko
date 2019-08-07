@@ -1,0 +1,36 @@
+---
+
+- name: Enable Ulauncher PPA
+  become: yes
+  apt_repository:
+    repo: ppa:agornostal/ulauncher
+
+- name: Enable Polybar i3lock PPA
+  become: yes
+  apt_repository:
+    repo: ppa:codejamninja/jam-os
+
+- name: Install base packages
+  become: yes
+  apt:
+    name:
+      - openbox
+      - compton
+      - feh
+      - lxappearance
+      - polybar
+      - ulauncher
+      - i3lock-color
+      - python-xdg
+
+- name: Stow openbox config
+  stow:
+    name: openbox
+    source: "{{ ansible_env .HOME }}/.dotfiles"
+    overwrite_conflicts: yes
+
+- name: Stow Compton config
+  stow:
+    name: compton
+    source: "{{ ansible_env .HOME }}/.dotfiles"
+    overwrite_conflicts: yes

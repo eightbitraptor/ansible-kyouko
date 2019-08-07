@@ -4,6 +4,7 @@
   roles:
     - name: developer
     - name: workstation_common
+    - name: openbox
   tasks:
     - name: Install general tooling
       become: yes
