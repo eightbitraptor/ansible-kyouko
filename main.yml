@@ -56,3 +56,15 @@
           - ffmpeg
           - python3-eyed3
 
+    - name: Create service to manage turbo boost
+      become: yes
+      template:
+        src: disable-turbo-boost.service
+        dest: /etc/systemd/system/disable-turbo-boost.service
+
+    - name: Ensure turbo boost is disabled
+      become: yes
+      systemd:
+        name: disable-turbo-boost
+        state: started
+        enabled: yes
