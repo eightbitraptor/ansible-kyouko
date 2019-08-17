@@ -22,6 +22,7 @@
         name:
           - foomatic-db
           - foomatic-db-ppds
+          - fuse-exfat
           - tig
           - htop
           - gparted
