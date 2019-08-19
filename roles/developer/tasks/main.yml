@@ -20,6 +20,7 @@
     append: yes
 
 - name: Ensure docker is enabled and running
+  become: yes
   systemd:
     name: docker
     state: started
