@@ -34,3 +34,9 @@
     name: compton
     source: "{{ ansible_env .HOME }}/.dotfiles"
     overwrite_conflicts: yes
+
+- name: Stow Polybar config
+  stow:
+    name: polybar
+    source: "{{ ansible_env .HOME }}/.dotfiles"
+    overwrite_conflicts: yes
