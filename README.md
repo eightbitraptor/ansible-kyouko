@@ -34,6 +34,8 @@ TODO
 ----
 
 * [X] Ubuntu support
+* [ ] Add some checks so long tasks only run when they need to
+* [ ] why is Emacs customisation file always "changed"
 * [ ] Emacs 26 in Ubuntu 18.04
 * [ ] fzf in Ubuntu 18.04
 * [X] bitmap fonts aren't currently working
