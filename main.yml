@@ -45,6 +45,12 @@
       template:
         src: disable-turbo-boost.service
         dest: /etc/systemd/system/disable-turbo-boost.service
+      register: turbo_boost_service
+
+    - name: reload systemd units
+      systemd:
+        daemon_reload: yes
+      when: turbo_boost_service.changed
 
     - name: Ensure turbo boost is disabled
       become: yes
