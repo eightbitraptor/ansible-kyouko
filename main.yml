@@ -47,3 +47,22 @@
         name: disable-turbo-boost
         state: started
         enabled: yes
+
+    - name: Load Thinkpad ACPI for backlight control
+      become: yes
+      template:
+        src: thinkpad-x250.conf
+        dest: /etc/modprobe.d/thinkpad-x250.conf
+
+    - name: Install backlight control utility
+      become: yes
+      apt:
+        deb: files/light_1.2_amd64.deb
+
+    - name: Allow backlight control without password
+      become: yes
+      template:
+        src: mattvh-light.conf
+        dest: /etc/sudoers.d/10-mattvh-light
+        mode: 0440
+
