@@ -61,6 +61,8 @@
     name: fonts
     source: "{{ dotfile_path }}"
     overwrite_conflicts: yes
+  register: stowed_fonts
 
 - name: Rebuild fc-cache
   command: fc-cache -fv
+  when: stowed_fonts.changed

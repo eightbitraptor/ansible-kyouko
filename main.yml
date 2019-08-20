@@ -11,6 +11,10 @@
       apt:
         state: present
         name:
+          - fonts-font-awesome
+          - fonts-noto
+          - fonts-open-sans
+          - fonts-roboto
           - foomatic-db
           - foomatic-db-compressed-ppds
           - exfat-fuse
@@ -24,6 +28,7 @@
       command: mv /etc/fonts/conf.d/70-no-bitmaps.conf /etc/fonts/70-no-bitmaps.conf.old
       args:
         removes: /etc/fonts/conf.d/70-no-bitmaps.conf
+      register: disable_bitmaps
 
     - name: Ensure bitmap fonts are enabled
       become: yes
@@ -31,10 +36,12 @@
         src: /etc/fonts/conf.avail/70-yes-bitmaps.conf
         dest: /etc/fonts/conf.d/70-yes-bitmaps.conf
         state: link
+      register: enable_bitmaps
 
     - name: reconfigure fontconfig
       become: yes
       command: dpkg-reconfigure fontconfig
+      when: disable_bitmaps.changed or enable_bitmaps.changed
 
     - name: Create service to manage turbo boost
       become: yes
