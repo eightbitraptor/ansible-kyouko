@@ -16,6 +16,12 @@
       - tmux
     state: present
 
+- name: Stow scripts
+  stow:
+    name: bin
+    source: "{{ dotfile_path }}"
+    overwrite_conflicts: yes
+
 - name: Stow Git config
   stow:
     name: git
