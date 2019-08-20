@@ -35,7 +35,14 @@ TODO
 
 * [X] Ubuntu support
 * [ ] Emacs 26 in Ubuntu 18.04
-* [ ] Alternative Window manager (openbox)
+* [ ] fzf in Ubuntu 18.04
+* [X] bitmap fonts aren't currently working
+* [ ] better openbox theme
+* [X] display backlight keys in Openbox
+* [ ] Automatic i3lock on suspend
+* [X] trackpad two finger scrolling with libinput
+* [ ] mpd/mpv
+* [X] Alternative Window manager (openbox)
 * [ ] better structure for developer role
 * [ ] think about separate libvirt/kvm role
 * [ ] override APT so that it nags when used directly
