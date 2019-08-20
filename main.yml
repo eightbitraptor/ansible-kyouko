@@ -18,6 +18,23 @@
           - gparted
           - jq
 
+    - name: Ensure bitmap fonts aren't disabled
+      become: yes
+      command: mv /etc/fonts/conf.d/70-no-bitmaps.conf /etc/fonts/70-no-bitmaps.conf.old
+      args:
+        removes: /etc/fonts/conf.d/70-no-bitmaps.conf
+
+    - name: Ensure bitmap fonts are enabled
+      become: yes
+      file:
+        src: /etc/fonts/conf.avail/70-yes-bitmaps.conf
+        dest: /etc/fonts/conf.d/70-yes-bitmaps.conf
+        state: link
+
+    - name: reconfigure fontconfig
+      become: yes
+      command: dpkg-reconfigure fontconfig
+
     - name: Create service to manage turbo boost
       become: yes
       template:
