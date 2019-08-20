@@ -9,14 +9,11 @@
     - name: Install general tooling
       become: yes
       apt:
-        state: present
         name:
           - fonts-font-awesome
           - fonts-noto
           - fonts-open-sans
           - fonts-roboto
-          - foomatic-db
-          - foomatic-db-compressed-ppds
           - exfat-fuse
           - tig
           - htop

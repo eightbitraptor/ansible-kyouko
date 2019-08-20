@@ -48,3 +48,4 @@ TODO
 * [ ] better structure for developer role
 * [ ] think about separate libvirt/kvm role
 * [ ] override APT so that it nags when used directly
+* [ ] automate Canon MG6150 printer installation
