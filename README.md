@@ -2,7 +2,7 @@ MVH Workstation Management
 =========
 
 This repository contains provisioning and config management playbooks required
-to decorate and furnish a bare Fedora install into the kind of place I'm
+to decorate and furnish a bare Ubuntu Mate install into the kind of place I'm
 comfortable living. It's opinionated, and always right.
 
 Requirements
