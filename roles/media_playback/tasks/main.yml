@@ -1,0 +1,30 @@
+---
+- name: Install package
+  become: yes
+  apt:
+    name:
+      - mpd
+      - mpv
+      - ffmpeg
+      - ncmpcpp
+
+- name: Stow MPD Config
+  stow:
+    name: mpd
+    source: "{{ dotfile_path }}"
+  overwrite_conflicts: yes
+
+- name: Stop and disable the MPD system service
+  become: yes
+  systemd:
+    name: mpd
+    state: stopped
+    enabled: no
+
+- name: Start and Enable the MPD user service
+  systemd:
+    name: mpd
+    state: started
+    enabled: yes
+    user: yes
+
