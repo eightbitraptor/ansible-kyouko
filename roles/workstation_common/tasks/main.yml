@@ -27,6 +27,12 @@
     name: editor
     path: /usr/bin/vim
 
+- name: Stow Vim config
+  stow:
+    name: vim
+    source: "{{ dotfile_path }}"
+    overwrite_conflicts: yes
+
 - name: Stow scripts
   stow:
     name: bin
