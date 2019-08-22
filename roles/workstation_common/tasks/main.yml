@@ -21,6 +21,12 @@
       - tmux
     state: present
 
+- name: Make Vim the default editor
+  become: yes
+  alternatives:
+    name: editor
+    path: /usr/bin/vim
+
 - name: Stow scripts
   stow:
     name: bin
