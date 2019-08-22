@@ -21,6 +21,11 @@
       - tmux
     state: present
 
+- name: Install fzf
+  become: yes
+  apt:
+    deb: "{{ role_path }}/files/fzf_0.17.5-2_amd64.deb"
+
 - name: Make Vim the default editor
   become: yes
   alternatives:
