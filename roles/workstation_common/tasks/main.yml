@@ -33,6 +33,16 @@
     source: "{{ dotfile_path }}"
     overwrite_conflicts: yes
 
+- name: Install Vim Plug
+  get_url:
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    dest: "{{ ansible_env .HOME }}/.vim/autoload/plug.vim"
+  register: plug_installed
+
+- name: Install Vim Plugins with Plug
+  command: "vim -E -s -c \"source ~/.vimrc\" +PlugInstall -c \":qa!\""
+  when: plug_installed.changed
+
 - name: Stow scripts
   stow:
     name: bin
