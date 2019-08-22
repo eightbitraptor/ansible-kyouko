@@ -34,7 +34,7 @@ TODO
 ----
 
 * [X] Ubuntu support
-* [ ] Add some checks so long tasks only run when they need to
+* [X] Add some checks so long tasks only run when they need to
 * [ ] why is Emacs customisation file always "changed"
 * [ ] Emacs 26 in Ubuntu 18.04
 * [ ] fzf in Ubuntu 18.04
@@ -49,3 +49,7 @@ TODO
 * [ ] think about separate libvirt/kvm role
 * [ ] override APT so that it nags when used directly
 * [ ] automate Canon MG6150 printer installation
+* [ ] Ranger file manager
+* [ ] URxvt
+* [ ] pywal for on the fly theming
+* [ ] Read through https://github.com/ibrahimbutt/direwolf-arch-rice/blob/master/README.md
