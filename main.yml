@@ -48,6 +48,7 @@
       register: turbo_boost_service
 
     - name: reload systemd units
+      become: yes
       systemd:
         daemon_reload: yes
       when: turbo_boost_service.changed
