@@ -4,7 +4,9 @@
   apt:
     name:
       - mpd
+      - mpdas
       - mpv
+      - mupdf
       - ffmpeg
       - ncmpcpp
       - abcde

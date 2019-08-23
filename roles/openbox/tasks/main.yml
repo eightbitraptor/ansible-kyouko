@@ -5,10 +5,10 @@
   apt_repository:
     repo: ppa:agornostal/ulauncher
 
-- name: Enable Polybar i3lock PPA
+- name: Enable PPA
   become: yes
   apt_repository:
-    repo: ppa:codejamninja/jam-os
+    repo: ppa:kgilmer/speed-ricer
 
 - name: Install base packages
   become: yes
@@ -17,6 +17,7 @@
       - openbox
       - compton
       - feh
+      - pywal
       - lxappearance
       - polybar
       - ulauncher

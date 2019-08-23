@@ -37,19 +37,20 @@ TODO
 * [X] Add some checks so long tasks only run when they need to
 * [ ] why is Emacs customisation file always "changed"
 * [ ] Emacs 26 in Ubuntu 18.04
-* [ ] fzf in Ubuntu 18.04
+* [X] fzf in Ubuntu 18.04
 * [X] bitmap fonts aren't currently working
-* [ ] better openbox theme
+* [X] better openbox theme
 * [X] display backlight keys in Openbox
 * [ ] Automatic i3lock on suspend
 * [X] trackpad two finger scrolling with libinput
-* [ ] mpd/mpv
+* [X] mpd/mpv
 * [X] Alternative Window manager (openbox)
 * [ ] better structure for developer role
 * [ ] think about separate libvirt/kvm role
 * [ ] override APT so that it nags when used directly
 * [ ] automate Canon MG6150 printer installation
-* [ ] Ranger file manager
-* [ ] URxvt
+* [X] Ranger file manager
+* [X] URxvt
 * [ ] pywal for on the fly theming
 * [ ] Read through https://github.com/ibrahimbutt/direwolf-arch-rice/blob/master/README.md
+* [ ] Compton transparency
