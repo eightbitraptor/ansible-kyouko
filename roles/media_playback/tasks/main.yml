@@ -15,6 +15,23 @@
     source: "{{ dotfile_path }}"
   overwrite_conflicts: yes
 
+- name: Detect Music Dir state
+  stat:
+    path: "{{ ansible_env .HOME }}/Music"
+  register: music_dir
+
+- name: Delete Music Dir
+  file:
+    path: "{{ ansible_env .HOME }}/Music"
+    state: absent
+  when: music_dir.stat.exists and music_dir.stat.isdir
+
+- name: Stow Music Dir
+  stow:
+    name: music
+    source: "{{ dotfile_path }}"
+  overwrite_conflicts: yes
+
 - name: Stop and disable the MPD system service
   become: yes
   systemd:
