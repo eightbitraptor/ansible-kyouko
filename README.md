@@ -33,23 +33,13 @@ https://www.eightbitraptor.com
 TODO
 ----
 
-* [X] Ubuntu support
-* [X] Add some checks so long tasks only run when they need to
+* [ ] ssh key unlock on login in i3
 * [ ] why is Emacs customisation file always "changed"
 * [ ] Emacs 26 in Ubuntu 18.04
-* [ ] fzf in Ubuntu 18.04
-* [X] bitmap fonts aren't currently working
-* [ ] better openbox theme
-* [X] display backlight keys in Openbox
+* [ ] fzf in Ubuntu 18.04 (fzf is installed, but not working in VIM)
 * [ ] Automatic i3lock on suspend
-* [X] trackpad two finger scrolling with libinput
-* [ ] mpd/mpv
-* [X] Alternative Window manager (openbox)
 * [ ] better structure for developer role
 * [ ] think about separate libvirt/kvm role
 * [ ] override APT so that it nags when used directly
 * [ ] automate Canon MG6150 printer installation
-* [ ] Ranger file manager
-* [ ] URxvt
-* [ ] pywal for on the fly theming
 * [ ] Read through https://github.com/ibrahimbutt/direwolf-arch-rice/blob/master/README.md
