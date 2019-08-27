@@ -32,6 +32,12 @@
     source: "{{ dotfile_path }}"
     overwrite_conflicts: yes
 
+- name: Stow Abcde CD Ripper config
+  stow:
+    name: abcde
+    source: "{{ dotfile_path }}"
+    overwrite_conflicts: yes
+
 - name: Stop and disable the MPD system service
   become: yes
   systemd:
