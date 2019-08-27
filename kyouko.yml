@@ -16,6 +16,7 @@
           - fonts-noto
           - fonts-open-sans
           - fonts-roboto
+          - fonts-symbola
           - exfat-fuse
           - tig
           - htop
