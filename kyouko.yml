@@ -1,5 +1,5 @@
 ---
-- name: local Ubuntu configuration
+- name: Configure Kyouko (Thinkpad X250 - My Workstation)
   hosts: all
   roles:
     - name: developer
