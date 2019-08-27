@@ -2,9 +2,10 @@
 - name: Configure Kyouko (Thinkpad X250 - My Workstation)
   hosts: all
   roles:
-    - name: developer
     - name: workstation_common
     - name: media_playback
+    - name: torrenter
+    - name: developer
     - name: i3
   tasks:
     - name: Install general tooling

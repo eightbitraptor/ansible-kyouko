@@ -1,0 +1,23 @@
+---
+- name: Install base packages
+  become: yes
+  apt:
+    name:
+      - rtorrent
+    state: latest
+
+- name: Configure directory hierarchy
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - "{{ ansible_env .HOME }}/Torrents/Incomplete"
+    - "{{ ansible_env .HOME }}/Torrents/Complete"
+    - "{{ ansible_env .HOME }}/Torrents/log"
+    - "{{ ansible_env .HOME }}/Torrents/.session"
+
+- name: Stow rtorrent config
+  stow:
+    name: rtorrent
+    source: "{{ ansible_env .HOME }}/.dotfiles"
+    overwrite_conflicts: yes
