@@ -13,7 +13,7 @@
   stow:
     name: mpd
     source: "{{ dotfile_path }}"
-  overwrite_conflicts: yes
+    overwrite_conflicts: yes
 
 - name: Detect Music Dir state
   stat:
@@ -30,7 +30,7 @@
   stow:
     name: music
     source: "{{ dotfile_path }}"
-  overwrite_conflicts: yes
+    overwrite_conflicts: yes
 
 - name: Stop and disable the MPD system service
   become: yes
