@@ -33,6 +33,11 @@ Running these Playbooks
 * run `bash install.sh` which will install ansible and the required Galaxy roles.
 * run `ansible-playbook -K kyouko.yml`
 
+Post-Install Tasks
+------------------
+
+* Go and edit `/etc/mpdscribble.conf` and shove your last.fm/libre.fm login creds in there
+
 Author Information
 ------------------
 
