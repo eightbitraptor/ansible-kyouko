@@ -9,7 +9,7 @@ comfortable living. It's opinionated, and always right.
 
 Kyouko is the hostname of my personal computer, a Lenovo Thinkpad X250 (as well 
 as the given name of one of the titular protagonists from 
-[the manga Horimiya](https://en.wikipedia.org/wiki/Hori-san_to_Miyamura-kun) and is
+[the manga Horimiya](https://en.wikipedia.org/wiki/Hori-san_to_Miyamura-kun)) and is
 currently the only machine this repo is supported and tested on. Despite that
 I've tried to keep the structure amenable to the addition of future machines.
 
