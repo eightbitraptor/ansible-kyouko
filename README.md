@@ -44,8 +44,7 @@ References
 ----------
 
 There are some pre-built packages of software that I use contained within this
-repo. All the packages were downloaded from the Github release page for the
-software and the source can be found at the following links:
+repo. Source can be found at the following links:
 
 1. **light: [haikarainen/light](https://github.com/haikarainen/light)** A super
    useful little utility for controlling the display backlight of a Thinkpad,
