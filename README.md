@@ -7,7 +7,9 @@ comfortable living. It's opinionated, and always right.
 
 ![kyouko](https://i.pinimg.com/originals/d6/71/43/d671437969650dd64e71e81a801174d4.jpg)
 
-Kyouko is the hostname of my personal computer, a Lenovo Thinkpad X250 and is
+Kyouko is the hostname of my personal computer, a Lenovo Thinkpad X250 (as well 
+as the given name of one of the titular protagonists from 
+[the manga Horimiya](https://en.wikipedia.org/wiki/Hori-san_to_Miyamura-kun) and is
 currently the only machine this repo is supported and tested on. Despite that
 I've tried to keep the structure amenable to the addition of future machines.
 
