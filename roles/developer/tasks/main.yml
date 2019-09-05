@@ -3,6 +3,9 @@
   become: yes
   apt:
     name:
+      - android-tools-adb
+      - android-tools-fastboot
+      - hugo
       - docker
       - docker-compose
 
