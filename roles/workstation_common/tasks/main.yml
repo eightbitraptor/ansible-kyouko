@@ -19,6 +19,7 @@
       - ranger
       - direnv
       - vim
+      - exuberant-ctags
       - python3-pip
       - tmux
     state: present
