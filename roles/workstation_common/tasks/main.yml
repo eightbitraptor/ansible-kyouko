@@ -19,8 +19,13 @@
       - ranger
       - direnv
       - vim
+      - python3-pip
       - tmux
     state: present
+
+- name: Install the Pynvim package for Fzf/Vim integration
+  pip:
+    name: pynvim
 
 - name: Install fzf
   become: yes
