@@ -1,9 +1,4 @@
 ---
-- name: Enable Polybar i3lock PPA
-  become: yes
-  apt_repository:
-    repo: ppa:codejamninja/jam-os
-
 - name: Clone Dotfiles
   git:
     repo: "https://github.com/majutsushi/urxvt-font-size.git"
@@ -18,11 +13,10 @@
       - rofi
       - dmenu
       - compton
-      - polybar
       - mpd
       - mpc
       - feh
-      - i3lock-color
+      - i3-lock
       - rxvt-unicode
     state: latest
 
@@ -40,12 +34,6 @@
 - name: Stow i3 config
   stow:
     name: i3
-    source: "{{ ansible_env .HOME }}/.dotfiles"
-    overwrite_conflicts: yes
-
-- name: Stow Polybar config
-  stow:
-    name: polybar
     source: "{{ ansible_env .HOME }}/.dotfiles"
     overwrite_conflicts: yes
 

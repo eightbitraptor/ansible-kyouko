@@ -1,9 +1,4 @@
 ---
-- name: Install PPA for Moka Icon set
-  become: yes
-  apt_repository:
-    repo: ppa:snwh/ppa
-
 - name: Create artifact directory
   file:
     path: "{{ ansible_env .HOME }}/.ansible-artifact"
@@ -19,15 +14,11 @@
   become: yes
   apt:
     name:
-      - moka-icon-theme
-      - faba-icon-theme
-      - faba-mono-icons
       - fonts-firacode
       - rxvt-unicode
       - ranger
       - direnv
       - vim
-      - emacs
       - tmux
     state: present
 
@@ -75,17 +66,6 @@
     name: bash
     source: "{{ dotfile_path }}"
     overwrite_conflicts: yes
-
-- name: Stow Emacs config
-  stow:
-    name: emacs
-    source: "{{ dotfile_path }}"
-    overwrite_conflicts: yes
-
-- name: Ensure emacs customisations file exists
-  file:
-    path: "{{ ansible_env .HOME}}/.emacs.d/customisations.el"
-    state: touch
 
 - name: Stow Tmux config
   stow:
