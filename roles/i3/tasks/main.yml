@@ -1,4 +1,9 @@
 ---
+- name: Regolith PPA
+  become: yes
+  apt_repository:
+    repo: ppa:kgilmer/regolith-stable
+
 - name: Clone Dotfiles
   git:
     repo: "https://github.com/majutsushi/urxvt-font-size.git"
@@ -9,21 +14,19 @@
   become: yes
   apt:
     name:
-      - i3-gaps-wm
+      - i3-gaps
       - rofi
       - dmenu
       - compton
       - mpd
       - mpc
       - feh
-      - i3-lock
       - rxvt-unicode
     state: latest
 
-- name: Install Pywal from local package
-  become: yes
-  apt:
-    deb: "{{ role_path }}/files/pywal_3.3.0-1ubuntu1ppa2_amd64.deb"
+- name: Install PyWal
+  pip:
+    name: pywal
 
 - name: Stow x11 config
   stow:
