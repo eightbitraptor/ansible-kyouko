@@ -1,9 +1,4 @@
 ---
-- name: Install PPA for Moka Icon set
-  become: yes
-  apt_repository:
-    repo: ppa:snwh/ppa
-
 - name: Create artifact directory
   file:
     path: "{{ ansible_env .HOME }}/.ansible-artifact"
@@ -17,30 +12,13 @@
 
 - name: Install Packages
   become: yes
-  apt:
+  dnf:
     name:
-      - moka-icon-theme
-      - faba-icon-theme
-      - faba-mono-icons
-      - fonts-firacode
-      - rxvt-unicode
-      - ranger
       - direnv
       - vim
-      - emacs
+      - fzf
       - tmux
     state: present
-
-- name: Install fzf
-  become: yes
-  apt:
-    deb: "{{ role_path }}/files/fzf_0.17.5-2_amd64.deb"
-
-- name: Make Vim the default editor
-  become: yes
-  alternatives:
-    name: editor
-    path: /usr/bin/vim
 
 - name: Stow Vim config
   stow:
@@ -58,12 +36,6 @@
   command: "vim -E -s -c \"source ~/.vimrc\" +PlugInstall -c \":qa!\""
   when: plug_installed.changed
 
-- name: Stow scripts
-  stow:
-    name: bin
-    source: "{{ dotfile_path }}"
-    overwrite_conflicts: yes
-
 - name: Stow Git config
   stow:
     name: git
@@ -75,17 +47,6 @@
     name: bash
     source: "{{ dotfile_path }}"
     overwrite_conflicts: yes
-
-- name: Stow Emacs config
-  stow:
-    name: emacs
-    source: "{{ dotfile_path }}"
-    overwrite_conflicts: yes
-
-- name: Ensure emacs customisations file exists
-  file:
-    path: "{{ ansible_env .HOME}}/.emacs.d/customisations.el"
-    state: touch
 
 - name: Stow Tmux config
   stow:

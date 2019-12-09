@@ -1,1 +1,1 @@
-sudo apt install -y ansible stow
+sudo dnf install ansible stow
