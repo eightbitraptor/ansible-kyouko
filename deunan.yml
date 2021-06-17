@@ -1,0 +1,7 @@
+---
+- name: Configure Deunan (Ryzen 3600 ITX Desktop)
+  hosts: all
+  roles:
+    - name: workstation_common
+    - name: developer
+

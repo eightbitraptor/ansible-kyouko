@@ -3,28 +3,51 @@
   become: yes
   apt:
     name:
-      - android-tools-adb
-      - android-tools-fastboot
-      - hugo
-      - docker
-      - docker-compose
+      - build-essential
+      - clang
+      - git
+      - autoconf
+      - bison
+      - gcc
+      - make
+      - zlib1g-dev
+      - libffi-dev
+      - libreadline-dev
+      - libgdm-dev
+      - libssl-dev
+      - jq
+      
+- name: Stow Git config
+  stow:
+    name: git
+    source: "{{ dotfile_path }}"
+    overwrite_conflicts: yes
 
-- name: Ensure docker group exists
-  become: yes
-  group:
-    name: docker
-    state: present
+- name: Create source code directory
+  file:
+    path: "{{ ansible_env .HOME }}/src"
+    state: directory
 
-- name: Ensure user is a member of docker
-  become: yes
-  user:
-    name: "{{ ansible_env .USER }}"
-    groups: docker
-    append: yes
+- name: Clone Ruby
+  git:
+    repo: "git@github.com:Shopify/ruby.git"
+    dest: "{{ ansible_env .HOME }}/src/ruby"
+    update: no
 
-- name: Ensure docker is enabled and running
-  become: yes
-  systemd:
-    name: docker
-    state: started
-    enabled: yes
+- name: Install rbenv
+  git:
+    repo: "https://github.com/rbenv/rbenv.git"
+    dest: "{{ ansible_env .HOME }}/.rbenv"
+    update: no
+
+- name: Make rbenv plugins dir
+  file:
+    path: "{{ ansible_env .HOME }}/.rbenv/plugins"
+    state: directory
+
+- name: Install ruby-build
+  git:
+    repo: "https://github.com/rbenv/ruby-build.git"
+    dest: "{{ ansible_env .HOME }}/.rbenv/plugins/ruby-build"
+    update: no
+

@@ -7,19 +7,21 @@ comfortable living. It's opinionated, and always right.
 
 ![kyouko](https://i.pinimg.com/originals/d6/71/43/d671437969650dd64e71e81a801174d4.jpg)
 
-Kyouko is the hostname of my personal computer, a Lenovo Thinkpad X250 (as well 
-as the given name of one of the titular protagonists from 
-[the manga Horimiya](https://en.wikipedia.org/wiki/Hori-san_to_Miyamura-kun)) and is
-currently the only machine this repo is supported and tested on. Despite that
-I've tried to keep the structure amenable to the addition of future machines.
+It contains configuration for 2 machines:
+
+ * Kyouko is the hostname of my (old) personal computer, a Lenovo Thinkpad X251
+   and one of the titular protagonists from [the manga
+Horimiya](https://en.wikipedia.org/wiki/Hori-san_to_Miyamura-kun)).
+ * Deunan is the hostname of my Ruby build server, a Ryzen based Mini ITX
+   Desktop and the main protagonist of the Manga Appleseed.
 
 Requirements
 ------------
 
 The assumptions made are these:
 
-  * You have installed a minimal install of the latest Ubuntu Mate LTS (18.04
-    at time of writing)
+  * You have installed a minimal install of the latest Ubuntu (most recently
+    tested with 21.04)
   * You have a non-root user who's account you are logged in as
   * That user has a default ssh key configured, that is authorised to pull from
     Github
@@ -30,20 +32,15 @@ Running these Playbooks
 --------------
 
 * Clone the repo from Github into somewhere sensible (I usually use `~/ansible`) and `cd` there.
-* run `bash install.sh` which will install ansible and the required Galaxy roles.
-* run `ansible-playbook -K kyouko.yml`
-
-Post-Install Tasks
-------------------
-
-* Go and edit `/etc/mpdscribble.conf` and shove your last.fm/libre.fm login creds in there
+* run `bash install.sh` to install Ansible and any dependancies.
+* run Ansible for a host, eg. `ansible-playbook -K kyouko.yml`
 
 Author Information
 ------------------
 
-Matt Valentine-House
-matt@eightbitraptor.com
-https://www.eightbitraptor.com
+- Matt Valentine-House
+- matt@eightbitraptor.com
+- https://www.eightbitraptor.com
 
 References
 ----------
@@ -62,19 +59,4 @@ repo. Source can be found at the following links:
    [kgilmer/speed-ricer](https://launchpad.net/~kgilmer/+archive/ubuntu/speed-ricer),
    build scripts for which [you can find
    here](https://github.com/regolith-linux/speed-ricer)
-3. **fzf: [junegunn/fzf](https://github.com/junegunn/fzf)** - The fuzzy finder.
-   I borrowed the package from the Ubuntu 19.04 repo
-   (https://launchpad.net/ubuntu/disco/amd64/fzf) because it hasn't been
-   backported to 18.04 yet
 
-TODO
-----
-
-* [ ] ssh key unlock on login in i3
-* [ ] why is Emacs customisation file always "changed"
-* [ ] Emacs 26 in Ubuntu 18.04
-* [ ] Automatic i3lock on suspend
-* [ ] better structure for developer role
-* [ ] think about separate libvirt/kvm role
-* [ ] override APT so that it nags when used directly
-* [ ] automate Canon MG6150 printer installation

@@ -1,8 +1,9 @@
 ---
-- name: Install PPA for Moka Icon set
+- name: Add fish shell PPA
   become: yes
-  apt_repository:
-    repo: ppa:snwh/ppa
+  ansible.builtin.apt_repository:
+    repo: ppa:fish-shell/release-3
+    update_cache: yes
 
 - name: Create artifact directory
   file:
@@ -19,22 +20,31 @@
   become: yes
   apt:
     name:
-      - moka-icon-theme
-      - faba-icon-theme
-      - faba-mono-icons
-      - fonts-firacode
-      - rxvt-unicode
-      - ranger
+      - tig
+      - ripgrep
+      - htop
+      - curl
+      - fish
+      - fzf
+      - bat
+      - glances
       - direnv
-      - vim
+      - neovim
       - emacs
       - tmux
     state: present
 
-- name: Install fzf
+- name: Stow fish shell config
+  stow:
+    name: fish
+    source: "{{ dotfile_path }}"
+    overwrite_conflicts: yes
+
+- name: Set the current users shell to fish
+  user:
+    name: "{{ ansible_user_id }}"
+    shell: "/usr/bin/fish"
   become: yes
-  apt:
-    deb: "{{ role_path }}/files/fzf_0.17.5-2_amd64.deb"
 
 - name: Make Vim the default editor
   become: yes
@@ -55,26 +65,8 @@
   register: plug_installed
 
 - name: Install Vim Plugins with Plug
-  command: "vim -E -s -c \"source ~/.vimrc\" +PlugInstall -c \":qa!\""
+  command: "vim -E -s -c \"source ~/.vim/vimrc\" +PlugInstall -c \":qa!\""
   when: plug_installed.changed
-
-- name: Stow scripts
-  stow:
-    name: bin
-    source: "{{ dotfile_path }}"
-    overwrite_conflicts: yes
-
-- name: Stow Git config
-  stow:
-    name: git
-    source: "{{ dotfile_path }}"
-    overwrite_conflicts: yes
-
-- name: Stow Bash config
-  stow:
-    name: bash
-    source: "{{ dotfile_path }}"
-    overwrite_conflicts: yes
 
 - name: Stow Emacs config
   stow:
@@ -87,19 +79,3 @@
     path: "{{ ansible_env .HOME}}/.emacs.d/customisations.el"
     state: touch
 
-- name: Stow Tmux config
-  stow:
-    name: tmux
-    source: "{{ dotfile_path }}"
-    overwrite_conflicts: yes
-
-- name: Stow Fonts
-  stow:
-    name: fonts
-    source: "{{ dotfile_path }}"
-    overwrite_conflicts: yes
-  register: stowed_fonts
-
-- name: Rebuild fc-cache
-  command: fc-cache -fv
-  when: stowed_fonts.changed
