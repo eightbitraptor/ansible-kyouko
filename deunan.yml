@@ -4,4 +4,5 @@
   roles:
     - name: workstation_common
     - name: developer
+    - name: media_playback
 
