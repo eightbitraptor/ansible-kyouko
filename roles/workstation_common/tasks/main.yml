@@ -3,6 +3,17 @@
   become: yes
   ansible.builtin.apt_repository:
     repo: ppa:fish-shell/release-3
+
+- name: Add Enpass apt key
+  become: yes
+  ansible.builtin.apt_key:
+    url: "https://apt.enpass.io/keys/enpass-linux.key"
+    state: present
+
+- name: Add Enpass deb archive
+  become: yes
+  ansible.builtin.apt_repository:
+    repo: "deb https://apt.enpass.io/ stable main"
     update_cache: yes
 
 - name: Create artifact directory
@@ -21,6 +32,7 @@
   apt:
     name:
       - tig
+      - enpass
       - ripgrep
       - htop
       - curl
@@ -77,5 +89,5 @@
 - name: Ensure emacs customisations file exists
   file:
     path: "{{ ansible_env .HOME}}/.emacs.d/customisations.el"
-    state: touch
+    state: file
 
