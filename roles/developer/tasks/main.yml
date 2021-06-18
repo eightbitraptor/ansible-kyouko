@@ -17,6 +17,7 @@
       - libssl-dev
       - universal-ctags
       - global
+      - r-base
       - jq
       
 - name: Stow Git config
@@ -52,4 +53,21 @@
     repo: "https://github.com/rbenv/ruby-build.git"
     dest: "{{ ansible_env .HOME }}/.rbenv/plugins/ruby-build"
     update: no
+
+- name: Gather package facts
+  ansible.builtin.package_facts:
+    manager: auto
+
+- name: Download RStudio
+  when: "'rstudio' not in ansible_facts.packages"
+  ansible.builtin.get_url:
+    url: "https://download1.rstudio.org/desktop/bionic/amd64/rstudio-1.4.1717-amd64.deb"
+    dest: "/tmp/rstudio-1.4.1717-amd64.deb"
+    checksum: sha256:e27b2645f800c8760fb67d69e89b3a371c4e9e4d517fa81d650f44f3975a1745
+
+- name: Install RStudio
+  when: "'rstudio' not in ansible_facts.packages"
+  become: yes
+  ansible.builtin.apt:
+    deb: "/tmp/rstudio-1.4.1717-amd64.deb"
 
