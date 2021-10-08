@@ -91,3 +91,8 @@
     path: "{{ ansible_env .HOME}}/.emacs.d/customisations.el"
     state: file
 
+- name: Install duf
+  become: yes
+  community.general.snap:
+    name: duf-utility
+    state: present
