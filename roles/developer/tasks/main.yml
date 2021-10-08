@@ -5,6 +5,7 @@
     name:
       - build-essential
       - clang
+      - lldb
       - git
       - autoconf
       - bison
@@ -15,8 +16,13 @@
       - libreadline-dev
       - libgdm-dev
       - libssl-dev
+      - sqlite3
+      - libsqlite3-dev
+      - sqlitebrowser
+      - libcurl4-openssl-dev
       - universal-ctags
       - global
+      - libxml2-dev
       - r-base
       - jq
       
@@ -70,4 +76,5 @@
   become: yes
   ansible.builtin.apt:
     deb: "/tmp/rstudio-1.4.1717-amd64.deb"
+
 
